@@ -7,7 +7,7 @@ export async function GET(req) {
     const tempDate = new Date()
     const date = tempDate.getFullYear() + "-" + (tempDate.getMonth() + 1) + "-" + tempDate.getDate();
     console.log("Current date:" + date);
-    const response = await fetch(`http://localhost:3000/api/timeIST`);
+    const response = await fetch(`/api/timeIST`);
     const time = new Date(await response.json());
     console.log("time: " + time);
     const currentHr = time.getHours();
@@ -28,6 +28,7 @@ export async function GET(req) {
                     expiredTokens.push(token);
                 }
             }
+            expiredTokens.sort((a, b) => a.time - b.time);
             console.log("Expired tokens by date : ", expiredTokens)
             return NextResponse.json(expiredTokens);
         }
