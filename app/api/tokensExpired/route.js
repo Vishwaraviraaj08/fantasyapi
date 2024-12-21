@@ -7,8 +7,9 @@ export async function GET(req) {
     const tempDate = new Date()
     const date = tempDate.getFullYear() + "-" + (tempDate.getMonth() + 1) + "-" + tempDate.getDate();
     console.log("Current date:" + date);
-    const response = await fetch(`/api/timeIST`);
-    const time = new Date(await response.json());
+    let d = new Date();
+    let utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+    let time = new Date(utc + (3600000*+5.5));
     console.log("time: " + time);
     const currentHr = time.getHours();
     const currentMin = time.getMinutes();
