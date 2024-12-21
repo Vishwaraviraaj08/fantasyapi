@@ -2,8 +2,11 @@ import clientPromise from "@/lib/mongodb";
 import { NextResponse } from "next/server";
 
 export async function GET(req) {
-    const { searchParams } = new URL(req.url);
-    const date = searchParams.get("date");
+    // const { searchParams } = new URL(req.url);
+    // const date = searchParams.get("date");
+    const tempDate = new Date()
+    const date = tempDate.getFullYear() + "-" + (tempDate.getMonth() + 1) + "-" + tempDate.getDate();
+    console.log("Current date:" + date);
     const response = await fetch(`http://localhost:3000/api/timeIST`);
     const time = new Date(await response.json());
     console.log("time: " + time);
