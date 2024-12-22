@@ -25,7 +25,7 @@ export async function GET(req) {
                 let times = token['time'].split(":")
                 let hrs = times[0];
                 let mins = times[1];
-                if (currentHr > hrs || (currentHr == hrs && currentMin > mins)) {
+                if (currentHr > hrs || (currentHr == hrs && currentMin >= mins)) {
                     expiredTokens.push(token);
                 }
             }
