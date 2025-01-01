@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 
 export async function GET(req) {
     const tempDate = new Date()
-    const date = tempDate.getFullYear() + "-" + (tempDate.getMonth() + 1) + "-" + tempDate.getDate();
+    const date = tempDate.getFullYear() + "-" + String(tempDate.getMonth() + 1).padStart(2, "0") + "-" + String(tempDate.getDate()).padStart(2, "0");
     console.log("Current date:" + date);
 
     try {

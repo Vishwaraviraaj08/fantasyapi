@@ -5,7 +5,7 @@ export async function GET(req) {
     // const { searchParams } = new URL(req.url);
     // const date = searchParams.get("date");
     const tempDate = new Date()
-    const date = tempDate.getFullYear() + "-" + (tempDate.getMonth() + 1) + "-" + tempDate.getDate();
+    const date = tempDate.getFullYear() + "-" + String(tempDate.getMonth() + 1).padStart(2, "0") + "-" + String(tempDate.getDate()).padStart(2, "0");
     console.log("Current date:" + date);
     let d = new Date();
     let utc = d.getTime() + (d.getTimezoneOffset() * 60000);
